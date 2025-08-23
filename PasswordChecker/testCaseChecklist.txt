@@ -1,0 +1,23 @@
+Check for password strenght accuracy:
+Number | Special Character | Upper case
+
+TTT 1A@aaaaaaaaaaaaaaa - Strong All good
+TTF 1a@aaaaaaaaaaaaaaa - Medium need Upper Case
+TFT 1aAaaaaaaaaaaaaaaa - Medium need Special Character
+FTT aA@aaaaaaaaaaaaaaa - Medium need Number
+TFF 1aaaaaaaaaaaaaaaaa - Weak need Special and Upper
+FTF aa@aaaaaaaaaaaaaaa - Weak need Number and Upper
+FFT aaAaaaaaaaaaaaaaaa - Weak need Number and Special
+FFF aaaaaaaaaaaaaaaaaa - Very Weak Needs All
+
+
+Password should skip whole process if present in a commonly used password list for dictionary attacks.
+Will also skip the process if character number is less than 16.
+
+
+8/22/2025 Test Done! All working. TextFile Can be expanded on to or easily replaced to check with other passworlist for any vulnerable passwords.
+
+Potential Future Updates: - increasing the amount of words inside the passwordtextfile. 
+                          - word detector for when a common word is recognized
+                          - password recommendations, reccomend ways to improve password
+                          - Check how many times said password has been used in places
