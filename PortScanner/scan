@@ -1,0 +1,43 @@
+#!/usr/bin/env python3
+
+import sys
+import socket
+from concurrent.futures import ThreadPoolExecutor
+
+if len(sys.argv) < 2:
+    print("Usage: scan <ip_address>")
+    sys.exit(1)
+
+ip = sys.argv[1]
+all_port = input("Enter specific port? [y or n]")
+
+if all_port.lower() == "y":
+    print("Usage: <beginning port> to <ending port>")
+    user_input = input("Enter Port Range: ")
+
+    user_input_parts = user_input.split()
+    beginning_port = int(user_input_parts[0])
+    ending_port = int(user_input_parts[2])
+         
+elif all_port.lower() == "n": 
+     beginning_port = 1
+     ending_port = 65535
+     
+     #1-65535 - ALL
+     #0-1023 - Well Known
+     #1024-49152 Registere
+     #49152-65535 Dynamic/Private
+else:
+     print("Do it again")
+     sys.exit()
+
+def scan_port(port): #def used for threading
+    create_tcp_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    create_tcp_socket.settimeout(0.5)
+    result = create_tcp_socket.connect_ex((ip,port))
+    create_tcp_socket.close()
+    if result == 0:
+        print(f"Port {port} is open")
+with ThreadPoolExecutor(max_workers=100) as executor:
+    executor.map(scan_port, range(beginning_port,ending_port))
+
