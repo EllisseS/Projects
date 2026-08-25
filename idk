@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pwede Ba Kita Ligawan? 💗</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Poppins", "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #ffd6e7, #fff0f6, #ffe4ef);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      color: #5b2940;
+    }
+
+    .hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -40px;
+      color: rgba(255, 105, 155, 0.45);
+      font-size: 25px;
+      animation: float 7s linear infinite;
+    }
+
+    .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .heart:nth-child(2) { left: 25%; animation-delay: 2s; }
+    .heart:nth-child(3) { left: 45%; animation-delay: 4s; }
+    .heart:nth-child(4) { left: 70%; animation-delay: 1s; }
+    .heart:nth-child(5) { left: 90%; animation-delay: 3s; }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .card {
+      width: min(90%, 520px);
+      padding: 45px 30px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border-radius: 30px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(170, 70, 110, 0.2);
+      position: relative;
+      z-index: 2;
+    }
+
+    .emoji {
+      font-size: 70px;
+      animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    h1 {
+      font-size: clamp(2rem, 8vw, 3.2rem);
+      margin: 15px 0 10px;
+      color: #d94f83;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #805268;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      position: relative;
+      min-height: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+    }
+
+    button {
+      border: none;
+      padding: 15px 28px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    #yes {
+      background: linear-gradient(135deg, #ff5f9e, #ff8abb);
+      color: white;
+      box-shadow: 0 8px 20px rgba(255, 95, 158, 0.35);
+    }
+
+    #yes:hover {
+      transform: scale(1.08);
+    }
+
+    #no {
+      background: #f1dfe7;
+      color: #805268;
+      position: relative;
+    }
+
+    .celebration {
+      display: none;
+      animation: appear 0.7s ease;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .celebration h1 {
+      font-size: clamp(2.3rem, 9vw, 4rem);
+    }
+
+    .number {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 15px 25px;
+      border-radius: 20px;
+      background: #fff0f6;
+      color: #d63f78;
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .small {
+      font-size: 0.9rem;
+      margin-top: 20px;
+      color: #a16a83;
+    }
+
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      top: -20px;
+      z-index: 10;
+      animation: confettiFall 3s linear forwards;
+    }
+
+    @keyframes confettiFall {
+      to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="hearts">
+    <div class="heart">♥</div>
+    <div class="heart">♡</div>
+    <div class="heart">♥</div>
+    <div class="heart">♡</div>
+    <div class="heart">♥</div>
+  </div>
+
+  <main class="card">
+
+    <!-- QUESTION PAGE -->
+    <section id="question">
+      <div class="emoji">🥺💗</div>
+
+      <h1>Pwede ba kita ligawan?</h1>
+
+      <p>
+        Isang simpleng tanong...<br>
+        pero galing sa puso. 👉👈
+      </p>
+
+      <div class="buttons">
+        <button id="yes">Pwede 💕</button>
+        <button id="no">Hindi pwede 😭</button>
+      </div>
+    </section>
+
+    <!-- CELEBRATION PAGE -->
+    <section class="celebration" id="celebration">
+      <div class="emoji">🥰💖🎉</div>
+
+      <h1>YEHEY!!!</h1>
+
+      <p>
+        Alam kong papayag ka eh. 😌💕<br>
+        Thank you for giving me a chance!
+      </p>
+
+      <div class="number">
+        📱 09XX XXX XXXX
+      </div>
+
+      <p class="small">
+        Message mo ako dito. I'll be waiting. 🥹💗
+      </p>
+    </section>
+
+  </main>
+
+  <script>
+    const noButton = document.getElementById("no");
+    const yesButton = document.getElementById("yes");
+    const question = document.getElementById("question");
+    const celebration = document.getElementById("celebration");
+
+    // Make the "Hindi pwede" button run away.
+    function moveButton() {
+      const padding = 20;
+
+      const maxX = window.innerWidth - noButton.offsetWidth - padding;
+      const maxY = window.innerHeight - noButton.offsetHeight - padding;
+
+      const x = Math.max(
+        padding,
+        Math.floor(Math.random() * maxX)
+      );
+
+      const y = Math.max(
+        padding,
+        Math.floor(Math.random() * maxY)
+      );
+
+      noButton.style.position = "fixed";
+      noButton.style.left = `${x}px`;
+      noButton.style.top = `${y}px`;
+      noButton.style.zIndex = "20";
+
+      // Cute message while escaping
+      noButton.textContent =
+        ["Nope 😭", "Huli ka! 😂", "Ayaw mo talaga? 🥺",
+         "Di pwede 😭", "Try again! 💨"][Math.floor(Math.random() * 5)];
+    }
+
+    // Desktop
+    noButton.addEventListener("mouseenter", moveButton);
+
+    // Mobile / touch
+    noButton.addEventListener("touchstart", function(e) {
+      e.preventDefault();
+      moveButton();
+    });
+
+    // If somehow clicked anyway
+    noButton.addEventListener("click", function(e) {
+      e.preventDefault();
+      moveButton();
+    });
+
+    // YES!
+    yesButton.addEventListener("click", function() {
+      question.style.display = "none";
+      celebration.style.display = "block";
+
+      createConfetti();
+    });
+
+    function createConfetti() {
+      const colors = [
+        "#ff5f9e",
+        "#ff8abb",
+        "#ffd166",
+        "#ff6b6b",
+        "#c77dff",
+        "#80ed99"
+      ];
+
+      for (let i = 0; i < 100; i++) {
+        const piece = document.createElement("div");
+
+        piece.className = "confetti";
+
+        piece.style.left = Math.random() * 100 + "vw";
+        piece.style.background =
+          colors[Math.floor(Math.random() * colors.length)];
+
+        piece.style.animationDelay =
+          Math.random() * 1.5 + "s";
+
+        piece.style.transform =
+          `rotate(${Math.random() * 360}deg)`;
+
+        document.body.appendChild(piece);
+
+        setTimeout(() => piece.remove(), 4500);
+      }
+    }
+  </script>
+
+</body>
+</html>
